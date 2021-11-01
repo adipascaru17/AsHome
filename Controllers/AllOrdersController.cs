@@ -35,6 +35,7 @@ namespace AsHomeStore.Controllers
             UserManager = userManager;
         }
 
+        [Authorize]
         // GET: AllOrders
         public ActionResult Index()
         {
@@ -66,7 +67,7 @@ namespace AsHomeStore.Controllers
         // GET: AllOrders/Create
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Create", "Order"); // "on create" send to createOrder controller 
         }
 
         // POST: AllOrders/Create
