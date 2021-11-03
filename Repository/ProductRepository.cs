@@ -67,9 +67,13 @@ namespace AsHomeStore.Repository
 
 
 
+        public void InsertProduct(ProductModel productModel)
+        {
+            productModel.IdProduct = Guid.NewGuid();
+            dbContext.Products.InsertOnSubmit(MapModelToDbObject(productModel));
+            dbContext.SubmitChanges();
 
-
-
+        }
 
 
 

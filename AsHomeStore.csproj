@@ -218,6 +218,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Models\DBObjects\AsHomeStore.dbml">
@@ -279,6 +280,7 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\AllOrders\Index.cshtml" />
     <Content Include="Views\AllOrders\AllOrders.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

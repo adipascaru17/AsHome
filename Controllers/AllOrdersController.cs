@@ -64,6 +64,7 @@ namespace AsHomeStore.Controllers
             return View();
         }
 
+        [Authorize( Roles ="User,Admin")]
         // GET: AllOrders/Create
         public ActionResult Create()
         {

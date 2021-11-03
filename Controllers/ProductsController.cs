@@ -24,19 +24,26 @@ namespace AsHomeStore.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public ActionResult Create()
-        {
+        { 
             return View();
         }
 
+
         // POST: Products/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                ProductModel productModel = new ProductModel();
+
+                UpdateModel(productModel);
+
+                productRepository.InsertProduct(productModel);
 
                 return RedirectToAction("Index");
             }
@@ -89,5 +96,7 @@ namespace AsHomeStore.Controllers
                 return View();
             }
         }
+
+       
     }
 }
