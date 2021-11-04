@@ -19,15 +19,19 @@ namespace AsHomeStore.Controllers
         }
 
         // GET: Categories/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+
+            CategoryModel categoryModel = categoryRepository.GetCategoryById(id);
+            return View("CategoryDetails", categoryModel);
         }
 
+        [Authorize (Roles ="Admin")]
         // GET: Categories/Create
         public ActionResult Create()
         {
-            return View();
+
+            return View("CreateCategory");
         }
 
         // POST: Categories/Create
@@ -36,7 +40,12 @@ namespace AsHomeStore.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                CategoryModel categoryModel = new CategoryModel();
+
+                UpdateModel(categoryModel);
+
+                categoryRepository.InsertCategory(categoryModel);
+
 
                 return RedirectToAction("Index");
             }

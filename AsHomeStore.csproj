@@ -280,7 +280,9 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\AllOrders\Index.cshtml" />
     <Content Include="Views\AllOrders\AllOrders.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\CreateProduct.cshtml" />
+    <Content Include="Views\Categories\CategoryDetails.cshtml" />
+    <Content Include="Views\Categories\CreateCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

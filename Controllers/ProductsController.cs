@@ -11,6 +11,7 @@ namespace AsHomeStore.Controllers
     public class ProductsController : Controller
     {
         ProductRepository productRepository = new ProductRepository();
+        CategoryRepository categoryRepository = new CategoryRepository();
         // GET: Products
         public ActionResult Index()
         {
@@ -27,8 +28,12 @@ namespace AsHomeStore.Controllers
         [Authorize(Roles = "Admin")]
         // GET: Products/Create
         public ActionResult Create()
-        { 
-            return View();
+        {
+            var category = categoryRepository.GetAllCategories();
+            SelectList categoryList = new SelectList(category, "IdCategory", "CategoryName");
+            ViewData["categoryList"] = categoryList; 
+
+            return View("CreateProduct");
         }
 
 

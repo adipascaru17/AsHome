@@ -36,16 +36,9 @@ namespace AsHomeStore.Repository
         }
 
 
-        public List<CategoryModel> GetCategoriesById(Guid Id)
+       public CategoryModel GetCategoryById( Guid Id)
         {
-            List<CategoryModel> categoryList= new List<CategoryModel>();
-
-            foreach (Models.DBObjects.Category dbUserClient in dbContext.Categories.Where(x => x.IdCategory == Id))
-            {
-                categoryList.Add(MapDbObjectToModel(dbUserClient));
-            }
-
-            return categoryList;
+            return MapDbObjectToModel(dbContext.Categories.FirstOrDefault(x => x.IdCategory == Id));
         }
 
 
@@ -63,6 +56,17 @@ namespace AsHomeStore.Repository
             return categoryList;
             
         }
+
+
+        public void InsertCategory( CategoryModel categoryModel)
+        {
+            categoryModel.IdCategory = new Guid();
+            dbContext.Categories.InsertOnSubmit(MapModelToDbObject(categoryModel));
+            dbContext.SubmitChanges();
+
+        }
+
+
 
 
         private CategoryModel MapDbObjectToModel( Models.DBObjects.Category dbCategory)
