@@ -1,4 +1,5 @@
 ﻿using AsHomeStore.Models;
+using AsHomeStore.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,17 +34,6 @@ namespace AsHomeStore.Repository
         }
 
 
-        public List<ProductModel> GetProductsById(Guid Id)
-        {
-            List<ProductModel> productList = new List<ProductModel>();
-            foreach (Models.DBObjects.Product dbProducts in dbContext.Products.Where(x=>x.IdProduct==Id))
-            {
-                productList.Add(MapDbObjectToModel(dbProducts));
-            }
-
-            return productList;
-
-        }
 
         public ProductModel GetProductById(Guid Id)
         {
@@ -77,7 +67,20 @@ namespace AsHomeStore.Repository
 
 
 
+        public void UpdateProduct( ProductModel productModel)
+        {
+            Models.DBObjects.Product existingProduct = dbContext.Products.FirstOrDefault(x => x.IdProduct == productModel.IdProduct);
+            if (existingProduct != null)
+            {
+                existingProduct.IdProduct = productModel.IdProduct;
+                existingProduct.ProductName = productModel.ProductName;
+                existingProduct.ProductDescription = productModel.ProductDescription;
+                existingProduct.UnitPrice = productModel.UnitPrice;
+                existingProduct.IdCategory = productModel.IdCategory;
+                dbContext.SubmitChanges();
+            }
 
+        }
 
 
 

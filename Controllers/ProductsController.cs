@@ -1,4 +1,5 @@
 ﻿using AsHomeStore.Models;
+using AsHomeStore.Models.ViewModels;
 using AsHomeStore.Repository;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,18 @@ namespace AsHomeStore.Controllers
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
-            return View();
+
+            ProductModel productModel = productRepository.GetProductById(id);
+            CategoryNameViewModel categoryNameViewModel = new CategoryNameViewModel();
+            categoryNameViewModel.ProductName = productModel.ProductName;
+            categoryNameViewModel.Description = productModel.ProductDescription;
+            categoryNameViewModel.Price = productModel.UnitPrice;
+            categoryNameViewModel.CategoryName = categoryRepository.GetCategoryById(productModel.IdCategory).CategoryName;
+                
+           
+            return View("ProductDetails", categoryNameViewModel);
         }
 
         [Authorize(Roles = "Admin")]
@@ -59,24 +69,31 @@ namespace AsHomeStore.Controllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
-            return View();
+
+            ProductModel productModel = productRepository.GetProductById(id);
+            return View("EditProduct", productModel);
         }
 
         // POST: Products/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
-            try
+            try 
             {
-                // TODO: Add update logic here
+                ProductModel productModel = new ProductModel();
+
+                UpdateModel(productModel);
+
+                productRepository.UpdateProduct(productModel);
+                
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("EditProduct");
             }
         }
 

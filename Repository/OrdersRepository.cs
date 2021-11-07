@@ -33,17 +33,6 @@ namespace AsHomeStore.Repository
 
         }
 
-        public List<OrderModel> GetOrdersById(Guid Id)
-        {
-            List<OrderModel> orderList = new List<OrderModel>();
-            foreach (Models.DBObjects.Order dbOrders in dbContext.Orders.Where(x => x.IdOrder == Id))
-            {
-                orderList.Add(MapDbObjectToModel(dbOrders));
-            }
-
-            return orderList;
-
-        }
 
 
         public void InsertOrder(OrderModel orderModel)
