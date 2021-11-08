@@ -56,46 +56,58 @@ namespace AsHomeStore.Controllers
         }
 
         // GET: Categories/Edit/5
-        public ActionResult Edit(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit(Guid id)
         {
-            return View();
+
+            CategoryModel categoryModel = categoryRepository.GetCategoryById(id);
+            return View("EditCategory", categoryModel);
         }
 
         // POST: Categories/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+
+        public ActionResult Edit(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                CategoryModel categoryModel = new CategoryModel();
+
+                UpdateModel(categoryModel);
+
+                categoryRepository.UpdateCategory(categoryModel);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("AllCategories");
             }
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Categories/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+
+            CategoryModel categoryModel = categoryRepository.GetCategoryById(id);
+            return View("DeleteCategory", categoryModel);
         }
 
         // POST: Categories/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                categoryRepository.DeleteCategory(id);
+                
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("DeleteCategory");
             }
         }
     }

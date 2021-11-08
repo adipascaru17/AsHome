@@ -68,6 +68,7 @@ namespace AsHomeStore.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Products/Edit/5
         public ActionResult Edit(Guid id)
         {
@@ -97,25 +98,30 @@ namespace AsHomeStore.Controllers
             }
         }
 
+
+        [Authorize(Roles = "Admin")]
         // GET: Products/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+
+            ProductModel productModel = productRepository.GetProductById(id);
+            return View("DeleteProduct", productModel);
         }
 
         // POST: Products/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+               
+                productRepository.DeleteProduct(id);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("AllProducts");
             }
         }
 

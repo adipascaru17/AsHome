@@ -34,7 +34,6 @@ namespace AsHomeStore.Repository
         }
 
 
-
         public ProductModel GetProductById(Guid Id)
         {
             return MapDbObjectToModel(dbContext.Products.FirstOrDefault(x => x.IdProduct == Id));
@@ -80,6 +79,16 @@ namespace AsHomeStore.Repository
                 dbContext.SubmitChanges();
             }
 
+        }
+
+        public void DeleteProduct(Guid Id)
+        {
+            Models.DBObjects.Product selectedProduct = dbContext.Products.FirstOrDefault(x => x.IdProduct == Id);
+            if(selectedProduct != null)
+            {
+                dbContext.Products.DeleteOnSubmit(selectedProduct);
+                dbContext.SubmitChanges();
+            }
         }
 
 

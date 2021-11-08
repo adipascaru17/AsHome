@@ -67,6 +67,37 @@ namespace AsHomeStore.Repository
         }
 
 
+        public void UpdateCategory (CategoryModel categoryModel)
+        {
+            Models.DBObjects.Category existingCategory = dbContext.Categories.FirstOrDefault(x => x.IdCategory == categoryModel.IdCategory);
+
+            if (existingCategory != null)
+            {
+                existingCategory.IdCategory = categoryModel.IdCategory;
+                existingCategory.CategoryName = categoryModel.CategoryName;
+                existingCategory.CategoryDescription = categoryModel.CategoryDescription;
+                dbContext.SubmitChanges();
+
+            }
+
+        }
+
+
+        public void DeleteCategory (Guid Id)
+        {
+            Models.DBObjects.Category selectedCategory = dbContext.Categories.FirstOrDefault(x => x.IdCategory == Id);
+
+            if (selectedCategory != null)
+            {
+                dbContext.Categories.DeleteOnSubmit(selectedCategory);
+                dbContext.SubmitChanges();
+            }
+
+        }
+
+
+
+
 
 
         private CategoryModel MapDbObjectToModel( Models.DBObjects.Category dbCategory)
