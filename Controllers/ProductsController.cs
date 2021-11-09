@@ -1,8 +1,10 @@
 ﻿using AsHomeStore.Models;
 using AsHomeStore.Models.ViewModels;
 using AsHomeStore.Repository;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +15,8 @@ namespace AsHomeStore.Controllers
     {
         ProductRepository productRepository = new ProductRepository();
         CategoryRepository categoryRepository = new CategoryRepository();
+
+
         // GET: Products
         public ActionResult Index()
         {
@@ -30,6 +34,7 @@ namespace AsHomeStore.Controllers
             categoryNameViewModel.Description = productModel.ProductDescription;
             categoryNameViewModel.Price = productModel.UnitPrice;
             categoryNameViewModel.CategoryName = categoryRepository.GetCategoryById(productModel.IdCategory).CategoryName;
+            categoryNameViewModel.PhotoUrl = productModel.PhotoUrl;
                 
            
             return View("ProductDetails", categoryNameViewModel);

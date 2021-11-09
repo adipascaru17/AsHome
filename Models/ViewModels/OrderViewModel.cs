@@ -5,6 +5,8 @@ namespace AsHomeStore.Models.ViewModels
 {
     public class OrderViewModel
     {
+        public Guid IdOrder { get; set; }
+
         [Display(Name = "Client Name")]
         public string ClientName { get; set; }
 

@@ -19,6 +19,14 @@
       <Association Name="AspNetUser_Order" Member="Orders" ThisKey="Id" OtherKey="IdUser" Type="Order" />
     </Type>
   </Table>
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="IdCategory" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CategoryName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CategoryDescription" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Category_Product" Member="Products" ThisKey="IdCategory" OtherKey="IdCategory" Type="Product" />
+    </Type>
+  </Table>
   <Table Name="dbo.Orders" Member="Orders">
     <Type Name="Order">
       <Column Name="IdOrder" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -35,14 +43,6 @@
       <Association Name="Product_Order" Member="Product" ThisKey="IdProduct" OtherKey="IdProduct" Type="Product" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Categories" Member="Categories">
-    <Type Name="Category">
-      <Column Name="IdCategory" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CategoryName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="CategoryDescription" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Association Name="Category_Product" Member="Products" ThisKey="IdCategory" OtherKey="IdCategory" Type="Product" />
-    </Type>
-  </Table>
   <Table Name="dbo.Products" Member="Products">
     <Type Name="Product">
       <Column Name="IdProduct" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -50,6 +50,7 @@
       <Column Name="ProductDescription" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="UnitPrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IdCategory" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PhotoUrl" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Association Name="Product_Order" Member="Orders" ThisKey="IdProduct" OtherKey="IdProduct" Type="Order" />
       <Association Name="Category_Product" Member="Category" ThisKey="IdCategory" OtherKey="IdCategory" Type="Category" IsForeignKey="true" />
     </Type>

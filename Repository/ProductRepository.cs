@@ -76,6 +76,7 @@ namespace AsHomeStore.Repository
                 existingProduct.ProductDescription = productModel.ProductDescription;
                 existingProduct.UnitPrice = productModel.UnitPrice;
                 existingProduct.IdCategory = productModel.IdCategory;
+                existingProduct.PhotoUrl = productModel.PhotoUrl;
                 dbContext.SubmitChanges();
             }
 
@@ -107,6 +108,7 @@ namespace AsHomeStore.Repository
                 productModel.ProductDescription = dbUser.ProductDescription;
                 productModel.ProductName = dbUser.ProductName;
                 productModel.UnitPrice = dbUser.UnitPrice;
+                productModel.PhotoUrl = dbUser.PhotoUrl;
                 return productModel;
             }
 
@@ -129,6 +131,7 @@ namespace AsHomeStore.Repository
                 dbUser.ProductDescription = productModel.ProductDescription;
                 dbUser.ProductName = productModel.ProductName;
                 dbUser.UnitPrice = productModel.UnitPrice;
+                dbUser.PhotoUrl = productModel.PhotoUrl;
 
                 return dbUser;
             }

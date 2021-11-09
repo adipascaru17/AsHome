@@ -1,0 +1,105 @@
+﻿@model AsHomeStore.Models.OrderModel
+
+@{
+    ViewBag.Title = "DeleteOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteOrder</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OrderModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.HiddenFor(model => model.IdOrder)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.IdOrder)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.IdUserClient)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.IdUserClient)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.IdProduct)
+        </dt>
+
+        <dd>
+            @Html.HiddenFor(model => model.IdProduct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippingAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippingCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingRegion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippingRegion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippingCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

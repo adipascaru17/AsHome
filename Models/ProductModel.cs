@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,5 +20,8 @@ namespace AsHomeStore.Models
         [Display(Name = "Price")]
         public int UnitPrice { get; set; }
         public Guid IdCategory { get; set; }
+
+        [Display(Name = "Choose the picture for your product ")]
+        public string PhotoUrl { get; set; }
     }
 }

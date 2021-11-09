@@ -20,6 +20,8 @@ namespace AsHomeStore.Models.ViewModels
         [Display(Name = "Category")]
         public string CategoryName { get; set; }
 
+        public string PhotoUrl { get; set; }
+
 
     }
 }

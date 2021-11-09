@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using System.Web;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using System;
+using AsHomeStore.Models;
 
 namespace AsHomeStore.Controllers
 {
@@ -43,6 +45,7 @@ namespace AsHomeStore.Controllers
 
             List<OrderViewModel> orders = ordersRepository.GetAllOrders().Where(order => order.IdUserClient == currentUser.Id).Select(order => new OrderViewModel
             {
+                IdOrder= order.IdOrder,
                 ClientName = currentUser.FirstName + ' ' + currentUser.LastName,
                 ProductName = productRepository.GetProductById(order.IdProduct).ProductName,
                 OrderDate = order.OrderDate,
@@ -110,18 +113,20 @@ namespace AsHomeStore.Controllers
         }
 
         // GET: AllOrders/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            OrderModel orderModel = ordersRepository.GetOrderById(id);
+            return View("DeleteOrder", orderModel);
+
         }
 
         // POST: AllOrders/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                ordersRepository.DeleteOrder(id);
 
                 return RedirectToAction("Index");
             }

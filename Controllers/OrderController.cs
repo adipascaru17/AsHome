@@ -103,24 +103,25 @@ namespace AsHomeStore.Controllers
         }
 
         // GET: Order/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
+            //OrderModel orderModel = ordersRepository.GetOrderById(id);
             return View();
         }
 
         // POST: Order/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Guid id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                //ordersRepository.DeleteOrder(id);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("AllOrders");
             }
         }
     }

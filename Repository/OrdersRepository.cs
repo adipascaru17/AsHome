@@ -33,6 +33,11 @@ namespace AsHomeStore.Repository
 
         }
 
+        public OrderModel GetOrderById(Guid Id)
+        {
+            return MapDbObjectToModel(dbContext.Orders.FirstOrDefault(x => x.IdOrder == Id));
+        }
+
 
 
         public void InsertOrder(OrderModel orderModel)
