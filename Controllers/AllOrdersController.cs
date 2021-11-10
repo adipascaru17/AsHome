@@ -112,6 +112,7 @@ namespace AsHomeStore.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: AllOrders/Delete/5
         public ActionResult Delete(Guid id)
         {

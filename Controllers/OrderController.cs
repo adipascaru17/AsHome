@@ -38,7 +38,7 @@ namespace AsHomeStore.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            return View("");
+            return Redirect("/AllOrders");
         }
 
         // GET: Order/Details/5
@@ -105,7 +105,7 @@ namespace AsHomeStore.Controllers
         // GET: Order/Delete/5
         public ActionResult Delete(Guid id)
         {
-            //OrderModel orderModel = ordersRepository.GetOrderById(id);
+           
             return View();
         }
 
@@ -115,7 +115,7 @@ namespace AsHomeStore.Controllers
         {
             try
             {
-                //ordersRepository.DeleteOrder(id);
+                
 
                 return RedirectToAction("Index");
             }

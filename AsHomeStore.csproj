@@ -259,6 +259,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\HomePagePics\AcPicture1.JPG" />
+    <Content Include="Content\HomePagePics\AcPicture2.JPG" />
+    <Content Include="Content\HomePagePics\homepage2.jpg" />
+    <Content Include="Content\HomePagePics\HomePageCarousel1.JPG" />
+    <Content Include="Content\HomePagePics\HomePageCarousel2.JPG" />
+    <Content Include="Content\HomePagePics\HomePageCarousel3.JPG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
