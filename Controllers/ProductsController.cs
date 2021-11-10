@@ -124,8 +124,9 @@ namespace AsHomeStore.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
+
                 return View("AllProducts");
             }
         }
